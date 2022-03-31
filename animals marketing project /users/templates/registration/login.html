@@ -1,0 +1,19 @@
+{%extends 'base.html' %}
+{% load crispy_forms_tags %}
+{%block title%}
+Log In
+{%endblock title%}
+{%block content%}
+<h2>Log In</h2>
+<!-- <div class="alert alert-success alert-dismissable fade show">Loged in succesfully</div> -->
+<form class="login" action="" method="POST">
+    <h2>Welcome Again</h2> 
+    {%csrf_token%}
+    <div class="form__input">
+        {{form|crispy}}
+    </div>
+    
+    <button class="form__button" type="submit">Log In</button>
+    <p>You don't have an accont? <a href="{%url 'signup'%}">Sign Up</a></p>
+</form>
+{%endblock content%}

@@ -1,0 +1,94 @@
+{%extends 'main.html'%}
+{%block content%}
+<h2 class="page_title">Livestock Machines Tools & Equipment For Sale</h2>
+
+<div class="marquee">
+<marquee behavior="" direction="">
+    <p >Call The Owner With The Provided Contact To Buy The Machinery Tool or Equipment</p>
+</marquee>
+</div>
+<div class="to_upload">
+    <a  href="{% url 'machinery_upload'%}">Upload Animals Machine Tools & Equipment For Sale</a>
+</div>
+<nav>
+<form method="GET" action="{%url 'tool_search'%}" class="d-flex">
+    <input class="form-control me-2" name="feedback" type="search" placeholder="Search for machinery,tool & equipment based on type, purpose & location" aria-label="Search">
+    <button class="btn-outline-success" type="submit">Search</button>
+</form>
+</nav>
+
+<table class="table table-dark table-striped table-bordered">
+    <thead>
+        <th>Machinery,Tool & <br> Equipment Picture</th> 
+        <th>
+            Tool Name
+            <br>
+            & Number Of Tools
+        </th>
+        <th>
+            Machinery,Tool & 
+            <br>
+            Equipment Purpose
+        </th>
+        <th>
+            Usage Brief &
+            <br>
+            Specific Animal Type
+            <br>
+            For Usage
+        </th>
+        <th> 
+            Owner Name,Location
+            <br>
+            & Contact
+        </th>
+        <th>Upload Time</th>
+        <th>Make Changes</th>
+    </thead>
+    <tbody>
+        {%for machinery in object_list%}
+       
+        <tr>
+            <td>
+                {%if machinery.machinery_tool_picture%}
+                <img src="{{machinery.machinery_tool_picture.url}}" alt="{{machinery.tool_name}}" height="100" width="auto">
+                <br> 
+                <b class="price">Maximum Price</b>
+                <br>
+                 <div class="price">Ksh. {{machinery.maximum_selling_price}}</div>
+                {%else%}
+                no picture
+                {%endif%}
+            </td>            
+            <td>
+                {{machinery.tool_name}}
+                <br>
+                <b>Quantity : </b>{{machinery.tools_number}}
+            </td>
+            <td>{{machinery.tool_purpose}}</td>
+            <td>
+                {{machinery.brief_its_usage}}
+                <br>
+                <b>Animal Type : </b>{{machinery.animal_type}},{{animals_type}}
+            </td>
+            <td>
+                {{machinery.owner_name}}
+                <br>
+                <b>County Location : {{machinery.location}}</b>
+                <br>
+                <b>Contact : {{machinery.owner_contact}}</b>
+            </td>
+          
+            <td>{{machinery.date_time}}</td>
+            <td><a class="btn btn-info ml- " href="{%url 'machinery_edit' machinery.pk%}">Edit</a> | <a class="btn btn-danger ml- " href="{%url 'machinery_delete' machinery.pk%}">Delete</a></td>
+            {%endfor%}
+            
+        </tr>
+    </tbody>
+</table>
+
+
+Designed By  ENG. B.M.K &middot; &  ENG. N.O. 
+<br>
+Copyright &copy; 2022 &middot; by ENG.  B.M.K  Technologies. All Rights Reserved.
+{%endblock content%}

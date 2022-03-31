@@ -1,0 +1,93 @@
+{%extends 'main.html'%}
+{%block content%}
+
+
+<h2 class="page_title">Cattle For Sale</h2>
+<div class="marquee">
+<marquee behavior="" direction="">
+    <p >Call The Owner With The Provided Contact To Buy The Cattle</p>
+</marquee>
+</div>
+<div class="to_upload">
+    <a  href="{%url 'cattle_list'%}">Back To Cattle List</a>
+</div>
+<nav>
+    <form method="GET" action="{%url 'search'%}" class="d-flex">
+        <input class="form-control me-2" name="search" type="search" placeholder="Search for cattle based on weight,age,breed,price & location" aria-label="Search">
+        <button class="btn-outline-success" type="submit">Search</button>
+    </form>
+    </nav>
+
+
+<table class="table table-dark table-striped table-bordered">
+    <thead>
+        <th>Cattle Picture</th> 
+        <th>Cattle Breed</th>
+        <th>Cattle Type</th>
+        <th>
+            Cattle Age
+            <br>
+            & Weight
+        </th>
+        <th>Health Record Book</th>
+        <th>
+            Owner Name
+            <br>
+            Location
+            <br>
+            & Contact
+        </th>
+        <th>Upload Time</th>
+        <th>Make Changes</th>
+    </thead>
+    <tbody>
+        {%for cattle in object_list%}
+       
+        <tr>
+            <td>
+                {%if cattle.cattle_picture%}
+                <img src="{{cattle.cattle_picture.url}}" alt="{{cattle.breed}}" height="100" width="auto">
+                <br> 
+                <b class="price">Maximum Price</b>
+                <br>
+                 <div class="price">Ksh. {{cattle.selling_price_range}}</div>
+                {%else%}
+                no picture
+                {%endif%}
+            </td>
+            <td>{{cattle.breed}}</td>
+            <td>{{cattle.cattle_sex_based_on}}</td>
+            <td>
+                {{cattle.cattle_age}} Years
+                <br>
+                <b>Weight : {{cattle.weight}} Kgs</b>
+            </td>
+            <td>
+                <a href="{{cattle.health_record_book.url}}" target="_blank">
+                    Download
+                </a>
+                <br>
+                Health Record Book
+                
+            </td>
+            <td>
+                {{cattle.owner_name}}
+                <br>
+                <b>County Location : {{cattle.location}}</b>
+                <br>
+                <b>Contact : {{cattle.owner_contact}}</b>
+            </td>
+            
+            <td>{{cattle.date_time}}</td>
+            <td><a class="btn btn-info ml- " href="{% url 'cattle_edit' cattle.pk %}">Edit</a> | <a class="btn btn-danger ml- " href="{% url 'cattle_delete' cattle.pk %}">Delete</a></td>
+            {%endfor%}
+            
+        </tr>
+    </tbody>
+</table>
+
+Designed By  ENG. B.M.K &middot; &  ENG. N.O. 
+<br>
+Copyright &copy; 2022 &middot; by  ENG.  B.M.K  Technologies. All Rights Reserved.
+
+{%endblock content%}

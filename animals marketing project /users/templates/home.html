@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{% block content %}
+<!-- <h2>Home Page</h2>  -->
+<a class="btn btn-info" href="{%url 'login'%}">Log In</a> | 
+<a class="btn btn-info" href="{%url 'signup'%}">Sign Up</a> |
+
+<br>
+
+<header>
+    <ul class="h_menu">
+        <h2 class="page_title">Modules</h2>
+        <li class="h_menu_item"> 
+            <h3>Livestock</h3>
+            <p>We do selling and buying of all domestic animals. You can upload animal for sale and also buy them <a href="{%url 'main'%}">here</a>.</p>
+            <ol>
+                <li>Cattle <a href="{%url 'cattle_list'%}"> Sale & Buy</a></li>
+                <li>Goat <a href="{%url 'goat_list'%}">Sale & Buy</a></li>
+            </ol>
+            
+        </li>
+        <br>
+        <li class="h_menu_item">
+            <h3>Animals Machinery & Tools</h3>
+            <p>Buy any kind of livestock production tools & equipment and machinery <a href="{%url 'machinery'%}">here</a>.</p>
+            <p><a href="{%url 'tool_search'%}">Search</a> for tools and equipment of your choice</p>
+        </li>
+        <br>
+        <li class="h_menu_item"><h3>Animals Feeds</h3></li>
+        <br>
+        <li class="h_menu_item"><h3>Animals Medicine</h3> </li>
+        <br>
+        <li class="h_menu_item"><h3>Locate The Nearest Agrovet</h3></li>
+    </ul>
+</header>
+<nav class="news">
+<h1>NEWS</h1>
+</nav>
+<div class="container">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20%" style="width: 20%">Project progress:20% built</div>
+    </div>
+</div>
+Designed By  ENG. B.M.K &middot; &  ENG. N.O. 
+<br>
+Copyright &copy; 2022 &middot; ENG.  B.M.K  Technologies. All Rights Reserved.
+<!-- <a href="{%url 'main'%}">Go To Main</a> -->
+{%endblock content%}

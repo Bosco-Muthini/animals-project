@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Edit</h1>
+<form class="login" action="" method="POST">
+    {% csrf_token %}
+    <div class="form__input">
+        {{ form|crispy }}
+    </div>
+    
+<button class="btn btn-info ml- " type="submit">Update</button>
+<a class="btn btn-info ml- " href="{%url 'goat_list'%}">Quit Update</a>
+</form>
+
+{% endblock content %}

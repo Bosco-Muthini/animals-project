@@ -1,0 +1,15 @@
+{%extends 'main.html'%}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="page_title">Cattle Upload</h2>
+<form class="login" action="" method="POST" enctype="multipart/form-data" >
+    {%csrf_token%}
+    <div class="form__input">
+    {{form|crispy}}
+    </div>
+    <button class="form__button" type="submit">Upload Cattle Details</button>
+    <br>
+    <a class="btn btn-info ml- " href="{%url 'cattle_list'%}">Quit Upload</a>
+</form>
+{% endblock content %}

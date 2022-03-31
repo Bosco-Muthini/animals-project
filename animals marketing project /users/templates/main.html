@@ -1,0 +1,66 @@
+
+{%load static%}
+<link rel="stylesheet" href="{%static 'bootstrap.css'%}">
+<link rel="stylesheet" href="{%static 'animals.css'%}">
+<body class="body">
+    
+{%block title%}
+
+{%endblock title%}
+{%if user.is_authenticated%}
+
+<h1 class="title_name">DOMESTIC ANIMAL MARKETING</h1>
+<div class="marquee">
+    <marquee  behavior="scroll" direction="left">
+       <h3>Welcome {{user.username}}</h3> 
+    </marquee>
+</div>
+    
+    <a class="btn btn-info ml- " href="{%url 'logout' %}">Log Out</a>
+    <br>
+    <br>
+    <ul class="menu">
+    <li class="menu-item"><a href="{%url 'animals'%}">Livestock</a></li>
+    
+    <li class="menu-item"><a href="{%url 'machinery'%}">Machinery Tools & Equipment</a></li>
+    
+    <li class="menu-item"><a href="{%url 'animalfeed'%}">Animal Feed</a></li>
+    
+    <li class="menu-item"><a href="{%url 'animalmedicine'%}">Animal Medicine</a></li>
+    
+    <li class="menu-item"> <a href="#">Locate Nearest Agrovet</a></li>
+    </ul>
+{%else%}
+    <p>You are not logged in</p>
+   
+{%endif%}
+{%block content%}
+{%if user.is_authenticated%}
+<h2 class="page_title">Animals Page</h2>
+
+<ul class="h_menu">
+    <li class="h_menu_item">
+        <h3>Cattle</h3>
+        <p class="menu_item_link">Buy And Sale Cattle : <a href="{%url 'cattle_list'%}">View Cattle List</a></p> 
+    </li> 
+    <br>
+    <li class="h_menu_item">
+        <h3>Goat</h3>
+        <p class="menu_item_link">Buy And Sale Goat : <a href="{%url 'goat_list'%}">View Goat List</a></p> 
+    </li> 
+</ul>
+ 
+<br>
+<ol>
+    <h3>Other Farm Fields</h3>
+    <li><a href="#">Poultry</a></li>
+    <li><a href="#">Crop Planting</a></li>
+</ol>
+    
+
+Designed By  ENG. B.M.K &middot; &  ENG. N.O. 
+<br>
+Copyright &copy; 2022 &middot; by ENG.  B.M.K  Technologies. All Rights Reserved.
+{%endif%}
+{%endblock content%}
+</body>

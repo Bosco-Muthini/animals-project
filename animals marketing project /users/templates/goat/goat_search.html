@@ -1,0 +1,93 @@
+
+{%extends 'main.html'%}
+
+{%block content%}
+<h2 class="page_title">Goat For Sale</h2>
+<div class="marquee">
+<marquee behavior="" direction="">
+    <p >Call The Owner With The Provided Contact To Buy The Gaot</p>
+</marquee>
+</div>
+<div class="to_upload">
+    <a  href="{%url 'goat_list'%}">Go Back To Goat List</a>
+</div>
+
+<nav>
+<form method="GET" action="{%url 'goat_search'%}" class="d-flex">
+    <input class="form-control me-2" name="goatsearch" type="search" placeholder="Search for goat based on weight,age,breed,price & location" aria-label="Search">
+    <button class="btn-outline-success" type="submit">Search</button>
+</form>
+</nav>
+
+<table class="table table-dark table-striped table-bordered">
+    <thead>
+        <th>Goat Picture</th> 
+        <th>Goat Breed</th>
+        <th>Goat Type</th>
+        <th>
+            Goat Age
+            <br>
+            & Weight
+        </th>
+        <th>Health Record Book</th>
+        <th>
+            Owner Name
+            <br>
+            Location
+            <br>
+            & Contact
+        </th>
+        <th>Upload Time</th>
+        <th>Make Changes</th>
+    </thead>
+    <tbody>
+        {%for goat in object_list%}
+       
+        <tr>
+            <td>
+                {%if goat.goat_picture%}
+                <img src="{{goat.goat_picture.url}}" alt="{{goat.breed}}" height="100" width="auto">
+                <br> 
+                <b class="price">Maximum Price</b>
+                <br>
+                 <div class="price">Ksh. {{goat.maximum_selling_price}}</div>
+                {%else%}
+                no picture
+                {%endif%}
+            </td>
+            <td>{{goat.breed}}</td>
+            <td>{{goat.goat_sex_based_on}}</td>
+            <td>
+                {{goat.goat_age}} Years
+                <br>
+                <b>Weight : {{goat.weight}} Kgs</b>
+            </td>
+            <td>
+                <a href="{{goat.health_record_book.url}}" target="_blank">
+                    Download
+                </a>
+                <br>
+                Health Record Book
+                
+            </td>
+            <td>
+                {{goat.owner_name}}
+                <br>
+                <b>County Location : {{goat.location}}</b>
+                <br>
+                <b>Contact : {{goat.owner_contact}}</b>
+            </td>
+            
+            <td>{{goat.date_time}}</td>
+            <td><a class="btn btn-info ml- " href="{% url 'goat_edit' goat.pk %}">Edit</a> | <a class="btn btn-danger ml- " href="{% url 'goat_delete' goat.pk %}">Delete</a></td>
+            {%endfor%}
+            
+        </tr>
+    </tbody>
+</table>
+
+Designed By  ENG. B.M.K &middot; &  ENG. N.O. 
+<br>
+Copyright &copy; 2022 &middot; by  ENG.  B.M.K  Technologies. All Rights Reserved.
+
+{%endblock content%}
